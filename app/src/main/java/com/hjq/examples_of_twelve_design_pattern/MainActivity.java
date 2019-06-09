@@ -1,9 +1,7 @@
 package com.hjq.examples_of_twelve_design_pattern;
 
-import android.content.Context;
-import android.media.AudioManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +11,6 @@ import android.widget.Toast;
 import com.hjq.examples_of_twelve_design_pattern.Abstract_factory_pattern.AppleUnPackFactory;
 import com.hjq.examples_of_twelve_design_pattern.Abstract_factory_pattern.BananaUnPackFactory;
 import com.hjq.examples_of_twelve_design_pattern.Abstract_factory_pattern.Box;
-import com.hjq.examples_of_twelve_design_pattern.Builder_Pattern.Builder;
 import com.hjq.examples_of_twelve_design_pattern.Builder_Pattern.ChinaBuilder;
 import com.hjq.examples_of_twelve_design_pattern.Builder_Pattern.Director;
 import com.hjq.examples_of_twelve_design_pattern.Builder_Pattern.Director_indian;
@@ -133,7 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 OringinInit();
                 break;
             case 5:
-                String result;
+                String result=null;
+                textView.setText("null ");
                 HungarySingleton hungarySingleton = HungarySingleton.getInstance();
                 ObjectOutputStream objectOutputStream = null;
                 try {
@@ -142,9 +140,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("singletion"));
                     HungarySingleton hungarySingleton01 = (HungarySingleton) objectInputStream.readObject();
                     if (hungarySingleton.equals(hungarySingleton01))
-                        result = "true";
+                        result = "true1";
                     else
-                        result = "false";
+                        result = "false1";
 
                     textView.setText(result);
                 } catch (IOException e) {
@@ -156,11 +154,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 StaticInnerClassSingleton staticInnerClassSingleton = StaticInnerClassSingleton.getInstance();
                 StaticInnerClassSingleton staticInnerClassSingleton2 = StaticInnerClassSingleton.getInstance();
                 if (staticInnerClassSingleton.equals(staticInnerClassSingleton2))
-                    result = "true";
+                    result = "true2";
                 else
-                    result = "false";
-                
+                    result = "false2";
+
+                title.setText("Singleton_Pattern");
                 textView.setText(textView.getText()+"\n"+result);
+                OringinInit();
+                break;
+            case 6:
                 break;
         }
     }
